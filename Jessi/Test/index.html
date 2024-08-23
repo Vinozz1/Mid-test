@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>pokedex API</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="#" class="header-nav-item">Home</a>
+            <a href="#" class="header-nav-item">About</a>
+        </nav>
+        <span class="logo">pokedex API</span>
+        <span id="menu"></span>
+    </header>
+
+    <main>
+        <article id="content"></article>
+        <aside>
+            <div class="profile-card">
+                <img src="assets/th.jpeg" alt="">
+                <div class="profile-info">
+                    <p>Created by</p>
+                    <h1>Jessikoy</h1>
+                </div>
+                <div class="socials">
+                    <a href="https://instagram.com" class="icon instagram" target="_blank"><i class="bx bxl-instagram"></i></a>
+                    <a href="https://www.linkedin.com" class="icon linkedin" target="_blank"><i class="bx bxl-linkedin"></i></a>
+                    <a href="mailto:your.email@example.com" class="icon mail" target="_blank"><i class="bx bx-envelope"></i></a>
+                </div>
+                <div>
+                    <button style="display: block;margin: 30px auto; font-size: 30px;">Load More</button>
+                </div>
+            </div>
+        </aside>
+        <div style="clear: both;"></div>
+    </main>
+
+    <footer>
+        <p>Copyright &copy; <span id="yearText"></span></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script id="mealCard" type="text/x-handlebars-template">
+        {{#each pokemons}}
+        <div class="card">
+            <div class="left" style="background-image: url('{{sprite}}');"></div>
+            <div class="right">
+                <h1 class="meal-name">{{name}}</h1>
+                <a href="#" class="meal-api" target="_blank">Name: {{name}}</a>
+            </div>
+        </div>
+        {{/each}}
+    </script>
+    
+    
+    <script src="script.js"></script>
+</body>
+
+</html>

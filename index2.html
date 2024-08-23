@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Social</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <span class="logo">MealSocial</span>
+        <nav>
+            <a href="#" class="header-nav-item">Home</a>
+            <a href="#" class="header-nav-item">Explore</a>
+            <a href="#" class="header-nav-item">Profile</a>
+        </nav>
+        <span id="menu">☰</span>
+    </header>
+
+    <main>
+        <section id="content">
+            <article id="meals">
+            </article>
+        </section>
+
+        <aside>
+            <div class="profile-card">
+                <div class="profile-picture"></div>
+                <div class="profile-info">
+                    <h2>John Doe</h2>
+                    <p>Food Enthusiast</p>
+                </div>
+                <div class="socials">
+                    <a href="#" class="icon">🔗</a>
+                    <a href="#" class="icon">📷</a>
+                    <a href="#" class="icon">🐦</a>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 MealSocial</p>
+    </footer>
+
+    <script >
+        const mealsContainer = document.getElementById('meals');
+
+async function fetchMeals() {
+    const apiUrl = 'https://www.themealdb.com/api/json/v1/1/search.php?f=a';
+    try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        displayMeals(data.meals);
+    } catch (error) {
+        console.error('Error fetching meals:', error);
+        mealsContainer.innerHTML = '<p>Failed to load meals. Please try again later.</p>';
+    }
+}
+
+function displayMeals(meals) {
+    if (meals) {
+        mealsContainer.innerHTML = meals.map(meal => `
+            <div class="card">
+                <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+                <div class="content">
+                    <h2>${meal.strMeal}</h2>
+                    <p>${meal.strInstructions}</p>
+                </div>
+            </div>
+        `).join('');
+    } else {
+        mealsContainer.innerHTML = '<p>No meals found.</p>';
+    }
+}
+
+fetchMeals();
+    </script>
+</body>
+</html>

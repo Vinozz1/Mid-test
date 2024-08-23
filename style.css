@@ -1,0 +1,89 @@
+:root {
+    --container-width: 90%;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+    height: 104px;
+    width: var(--container-width);
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: black;    
+}
+
+section.container {
+    display: flex;
+    justify-content: space-between;
+    height: calc(100vh - 154px);
+    width: 90%;
+    margin: 0 auto;
+    border: 2px solid black;
+    padding: 10px;
+}
+
+section.container div.left {
+    width: 60%;
+    height: 100%;
+    background: white;
+}
+
+section.container div.right {
+    width: 35%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section.container div.right img {
+    height: inherit;
+    width: auto;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+section.container div.left div.top h1 {
+    padding-top: 20px;
+    padding-left: 30px;
+}
+
+section.container div.left div.top p {
+    padding-top: 50px;
+    padding-left: 30px;
+    font-size: 25px;
+}
+
+section.container div.left div.bottom {
+    padding-top: 200px;
+}
+
+section.container div.left div.bottom p {
+    font-weight: bold;
+    padding-left: 60px;
+}
+
+section.container div.left div.bottom span {
+    font-size: 15px; 
+    margin-left: 50px; 
+}
+
+div.clear {
+    clear: both;
+}

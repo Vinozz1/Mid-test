@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script id="cryptoCard" type="text/x-handlebars-template">
+        {{#each cryptos}}
+        <div class="card">
+            <div class="left">
+                <img src="{{image}}" alt="{{name}}">
+            </div>
+            <div class="right">
+                <h1 class="crypto-name">{{name}} ({{symbol}})</h1>
+                <p class="crypto-desc">Market Cap Rank: {{market_cap_rank}}</p>
+                <p class="crypto-desc">Market Cap: ${{market_cap}}</p>
+                <p class="crypto-desc">Current Price: ${{current_price}}</p>
+            </div>
+        </div>
+        {{/each}}
+    </script>
+    <title>Crypto Data API</title>
+</head>
+<body>
+    <header>
+        <span class="logo">Crypto Data API</span>
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Search coin...">
+            <button id="search-button"><i class='bx bx-search'></i></button>
+            <img id="loading-animation" src="assets/Magnify@1x-2.0s-200px-200px.gif" alt="Loading" style="display: none; width: 30px;">
+        </div>
+        
+        <button id="theme-toggle" style="margin-left: auto; padding: 10px 20px; cursor: pointer;">Toggle Dark Mode</button>
+    </header>
+    
+    <main>
+        <article id="content"></article>
+        <aside>
+            <div class="profile-card">
+                <img src="assets/th.jpeg" alt="Profile Picture">
+                <div class="profile-info">
+                    <p>Created by</p>
+                    <h1>Jonathan</h1>
+                </div>
+
+                <div class="socials">
+                    <a href="#" class="icon instagram" target="_blank"><i class="bx bxl-instagram"></i></a>
+                    <a href="#" class="icon linkedin" target="_blank"><i class="bx bxl-linkedin"></i></a>
+                    <a href="mailto:yourmail@example.com" class="icon mail" target="_blank"><i class="bx bx-mail-send"></i></a>
+                </div>
+                <div>
+                    <button id="load-more-button" style="display: block; margin: 30px auto; font-size: 30px;">Load More</button>
+                </div>
+            </div>
+        </aside>
+        <div style="clear: both;"></div>
+    </main>
+    <footer>
+        <p>Copyright &copy; <span id="yearText"></span></p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
