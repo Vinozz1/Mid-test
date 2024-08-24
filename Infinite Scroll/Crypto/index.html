@@ -35,14 +35,17 @@
         <div id="search-container">
             <input type="text" id="search-input" placeholder="Search coin...">
             <button id="search-button"><i class='bx bx-search'></i></button>
-            <img id="loading-animation" src="assets/Magnify@1x-2.0s-200px-200px.gif" alt="Loading" style="display: none; width: 30px;">
+            
         </div>
         
         <button id="theme-toggle" style="margin-left: auto; padding: 10px 20px; cursor: pointer;">Toggle Dark Mode</button>
     </header>
     
     <main>
-        <article id="content"></article>
+        <article id="content">
+            <div id="loading-overlay" style="display: none;">
+                <img id="loading-animation" src="assets/Magnify@1x-2.0s-200px-200px.gif" alt="Loading">        
+        </article>
         <aside>
             <div class="profile-card">
                 <img src="assets/th.jpeg" alt="Profile Picture">
@@ -50,10 +53,9 @@
                     <p>Created by</p>
                     <h1>Jonathan</h1>
                 </div>
-
                 <div class="socials">
                     <a href="#" class="icon instagram" target="_blank"><i class="bx bxl-instagram"></i></a>
-                    <a href="#" class="icon linkedin" target="_blank"><i class="bx bxl-linkedin"></i></a>
+                    <a href="#" class="icon whatsapp" target="_blank"><i class="bx bxl-whatsapp"></i></a>
                     <a href="mailto:yourmail@example.com" class="icon mail" target="_blank"><i class="bx bx-mail-send"></i></a>
                 </div>
                 <div>

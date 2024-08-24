@@ -54,7 +54,6 @@ function initialLoad() {
 }
 
 initialLoad();
-document.getElementById('yearText').innerHTML = new Date().getFullYear();
 
 document.getElementById('search-button').addEventListener('click', () => {
     performSearch();
@@ -69,8 +68,8 @@ document.getElementById('search-input').addEventListener('keypress', (e) => {
 function performSearch() {
     const query = document.getElementById('search-input').value.toLowerCase();
     if (query) {
-        document.getElementById('loading-animation').style.display = 'inline';
-
+        const loadingOverlay = document.getElementById('loading-overlay');
+        loadingOverlay.style.display = 'flex';  
         setTimeout(() => {
             const filteredCryptos = cryptosData.filter(crypto => 
                 crypto.name.toLowerCase().includes(query) || 
@@ -78,10 +77,11 @@ function performSearch() {
             );
             renderSearchResults(filteredCryptos);
 
-            document.getElementById('loading-animation').style.display = 'none';
+            loadingOverlay.style.display = 'none'; 
         }, 3000); 
     }
 }
+
 
 function renderSearchResults(results) {
     const container = document.getElementById('content');
@@ -89,13 +89,18 @@ function renderSearchResults(results) {
     const cryptoList = { cryptos: results };
     const html = cryptoTemplate(cryptoList);
     container.insertAdjacentHTML('beforeend', html);
+    document.querySelectorAll('.card').forEach((card, index) => {
+        setTimeout(() => {
+            card.classList.add('visible');
+        }, index * 100); 
+    });
 }
 
 const themeToggle = document.getElementById('theme-toggle');
 let currentTheme = localStorage.getItem('theme') || 'light';
 
 document.body.classList.add(currentTheme + '-mode');
-document.querySelectorAll('header, .card, .crypto-api, footer, span.logo, #theme-toggle').forEach(el => {
+document.querySelectorAll('header, .card, .crypto-api, main, .profile-card, footer, span.logo, #theme-toggle').forEach(el => {
     el.classList.add(currentTheme + '-mode');
 });
 
@@ -104,7 +109,7 @@ themeToggle.addEventListener('click', () => {
     
     document.body.classList.replace(currentTheme === 'light' ? 'dark-mode' : 'light-mode', currentTheme + '-mode');
     
-    document.querySelectorAll('header, .card, .crypto-api, footer, span.logo, #theme-toggle').forEach(el => {
+    document.querySelectorAll('header, .card, .crypto-api, main, .profile-card, footer, span.logo, #theme-toggle').forEach(el => {
         el.classList.replace(currentTheme === 'light' ? 'dark-mode' : 'light-mode', currentTheme + '-mode');
     });
     
@@ -113,5 +118,3 @@ themeToggle.addEventListener('click', () => {
 
 initialLoad();
 document.getElementById('yearText').innerHTML = new Date().getFullYear();
-
-
