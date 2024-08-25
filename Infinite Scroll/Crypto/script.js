@@ -97,12 +97,23 @@ function renderSearchResults(results) {
 }
 
 const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
 let currentTheme = localStorage.getItem('theme') || 'light';
+
+function updateThemeIcon() {
+    if (currentTheme === 'dark') {
+        themeIcon.classList.replace('bx-moon', 'bx-sun');
+    } else {
+        themeIcon.classList.replace('bx-sun', 'bx-moon');
+    }
+}
 
 document.body.classList.add(currentTheme + '-mode');
 document.querySelectorAll('header, .card, .crypto-api, main, .profile-card, footer, span.logo, #theme-toggle').forEach(el => {
     el.classList.add(currentTheme + '-mode');
 });
+
+updateThemeIcon();  
 
 themeToggle.addEventListener('click', () => {
     currentTheme = currentTheme === 'light' ? 'dark' : 'light';
@@ -113,8 +124,13 @@ themeToggle.addEventListener('click', () => {
         el.classList.replace(currentTheme === 'light' ? 'dark-mode' : 'light-mode', currentTheme + '-mode');
     });
     
+    updateThemeIcon();  
+    
     localStorage.setItem('theme', currentTheme);
 });
+
+document.getElementById('yearText').innerHTML = new Date().getFullYear();
+
 
 initialLoad();
 document.getElementById('yearText').innerHTML = new Date().getFullYear();
